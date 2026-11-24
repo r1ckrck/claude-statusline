@@ -1,0 +1,9 @@
+{
+  "name": "statusline",
+  "version": "0.1.0",
+  "description": "A two-line status line: model, effort, folder and git on top; cache, context, usage limits, API time and cost below.",
+  "author": { "name": "r1ckrck" },
+  "homepage": "https://github.com/r1ckrck/claude-statusline",
+  "repository": "https://github.com/r1ckrck/claude-statusline",
+  "license": "GPL-3.0-only"
+}

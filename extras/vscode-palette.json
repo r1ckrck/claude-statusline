@@ -1,0 +1,23 @@
+{
+  "workbench.colorCustomizations": {
+    "terminal.background": "#000000",
+    "terminal.foreground": "#d0cdd8",
+    "terminal.ansiBlack": "#0c0a10",
+    "terminal.ansiRed": "#d4a0b9",
+    "terminal.ansiGreen": "#a3bf8f",
+    "terminal.ansiYellow": "#d4c78f",
+    "terminal.ansiBlue": "#8fadcc",
+    "terminal.ansiMagenta": "#b0a0d4",
+    "terminal.ansiCyan": "#8dc0b5",
+    "terminal.ansiWhite": "#ccc8d4",
+    "terminal.ansiBrightBlack": "#5c5668",
+    "terminal.ansiBrightRed": "#e0b0c6",
+    "terminal.ansiBrightGreen": "#b5d1a0",
+    "terminal.ansiBrightYellow": "#e0d4a0",
+    "terminal.ansiBrightBlue": "#a3c0db",
+    "terminal.ansiBrightMagenta": "#c4b4e0",
+    "terminal.ansiBrightCyan": "#a0d4c8",
+    "terminal.ansiBrightWhite": "#d8d5e0"
+  },
+  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font Mono"
+}
