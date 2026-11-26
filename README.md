@@ -84,6 +84,7 @@ Set it in `~/.claude/settings.json` under `"env"`.
 - **Windows:** runs under Git Bash. Install jq with `winget install jqlang.jq` and confirm `jq --version` works in Git Bash specifically.
 - **Data:** every number comes from the JSON Claude Code passes the script. Nothing is estimated or scraped.
 - **Cost:** one `jq` call and a few `git` calls per refresh, roughly 10–30 ms.
+- **Usage log:** when a `~/.me-and-ai/` folder exists (the me-and-ai collector creates it), the script appends one JSON line to `~/.me-and-ai/statusline.jsonl` each time the usage limits or session cost change. Without that folder it writes nothing.
 
 ## License
 

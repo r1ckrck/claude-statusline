@@ -38,6 +38,23 @@ IFS=$'\x1f' read -r model model_id cwd cost api_ms p5h r5h p7d r7d ctx_pct cu_in
   (.effort.level // "")
 ] | join("\u001f")')"
 
+# Usage log for me-and-ai: only on devices where its collector is installed (~/.me-and-ai exists).
+# One line per change in limits or cost, so a refresh that changes nothing writes nothing.
+mai_dir="$HOME/.me-and-ai"
+if [ -d "$mai_dir" ] && [ -n "$p5h$p7d" ]; then
+  mai_sid=$(printf '%s' "$input" | jq -r '.session_id // ""')
+  mai_key="$mai_sid|$p5h|$p7d|$cost"
+  if [ "$(cat "$mai_dir/statusline.last" 2>/dev/null)" != "$mai_key" ]; then
+    printf '%s' "$mai_key" >"$mai_dir/statusline.last"
+    printf '%s' "$input" | jq -c --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" '{
+      ts: $ts, session: .session_id, model: .model.id,
+      p5: .rate_limits.five_hour.used_percentage, r5: .rate_limits.five_hour.resets_at,
+      p7: .rate_limits.seven_day.used_percentage, r7: .rate_limits.seven_day.resets_at,
+      cost: .cost.total_cost_usd, ctx: .context_window.used_percentage
+    }' >>"$mai_dir/statusline.jsonl" 2>/dev/null
+  fi
+fi
+
 # Context % — straight from the payload (authoritative); strip any fraction.
 ctx_pct=${ctx_pct%.*}
 
