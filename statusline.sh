@@ -1,4 +1,5 @@
 #!/bin/bash
+# statusline-version: 0.1.2
 # claude-statusline — a two-line status line for Claude Code.
 # Line 1 (identity): [Model pill] [CWD pill] [Git arrow segment]
 # Line 2 (metrics):  cache · ctx · 5h · 7d · api · cost  (thin │ separators)

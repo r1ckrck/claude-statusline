@@ -5,7 +5,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "mkdir -p \"${CLAUDE_PLUGIN_DATA}\" && cp \"${CLAUDE_PLUGIN_ROOT}/statusline.sh\" \"${CLAUDE_PLUGIN_DATA}/statusline.sh\" && chmod +x \"${CLAUDE_PLUGIN_DATA}/statusline.sh\""
+            "command": "mkdir -p \"${CLAUDE_PLUGIN_DATA}\" && src=\"${CLAUDE_PLUGIN_ROOT}/statusline.sh\" && dst=\"${CLAUDE_PLUGIN_DATA}/statusline.sh\" && v() { sed -n \"s/^# statusline-version: //p\" \"$1\" 2>/dev/null | head -n 1; } && new=\"$(v \"$src\")\" && old=\"$(v \"$dst\")\" && { [ ! -f \"$dst\" ] || [ -z \"$old\" ] || [ \"$(printf \"%s\\n%s\\n\" \"$old\" \"$new\" | sort -V | tail -n 1)\" = \"$new\" ]; } && cp \"$src\" \"$dst\" && chmod +x \"$dst\" || true"
           }
         ]
       }
